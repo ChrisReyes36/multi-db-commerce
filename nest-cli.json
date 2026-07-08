@@ -37,6 +37,15 @@
         "tsConfigPath": "apps/catalog/tsconfig.app.json"
       }
     },
+    "common": {
+      "type": "library",
+      "root": "libs/common",
+      "entryFile": "index",
+      "sourceRoot": "libs/common/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/common/tsconfig.lib.json"
+      }
+    },
     "inventory": {
       "type": "application",
       "root": "apps/inventory",
