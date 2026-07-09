@@ -42,6 +42,7 @@ export class Order {
   total!: number;
 
   @Prop({
+    type: String,
     enum: ['PENDING', 'PAID', 'CANCELLED'],
     default: 'PENDING',
   })
