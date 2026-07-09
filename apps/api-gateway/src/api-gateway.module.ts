@@ -5,6 +5,7 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { RolesGuard } from './auth/guards/roles.guard';
 import { AuthHttpController } from './auth/auth-http.controller';
 import { CatalogHttpController } from './catalog/catalog-http.controller';
+import { InventoryHttpController } from './inventory/inventory-http.controller';
 import { OrdersHttpController } from './orders/orders-http.controller';
 
 @Module({
@@ -22,10 +23,15 @@ import { OrdersHttpController } from './orders/orders-http.controller';
       name: 'ORDERS_SERVICE',
       queueEnv: 'ORDERS_QUEUE',
     }),
+    RmqModule.registerClient({
+      name: 'INVENTORY_SERVICE',
+      queueEnv: 'INVENTORY_QUEUE',
+    }),
   ],
   controllers: [
     AuthHttpController,
     CatalogHttpController,
+    InventoryHttpController,
     OrdersHttpController,
   ],
   providers: [JwtAuthGuard, RolesGuard],
