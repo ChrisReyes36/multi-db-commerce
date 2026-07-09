@@ -8,16 +8,17 @@ export function connectRmqMicroservice(
 ): void {
   const config = app.get(ConfigService);
 
-  app.connectMicroservice({
-    transport: Transport.RMQ,
-    options: {
-      urls: [config.getOrThrow<string>('RMQ_URL')],
-      queue: config.getOrThrow<string>(queueEnv),
-      queueOptions: {
-        durable: true,
+  app.connectMicroservice(
+    {
+      transport: Transport.RMQ,
+      options: {
+        urls: [config.getOrThrow<string>('RMQ_URL')],
+        queue: config.getOrThrow<string>(queueEnv),
+        queueOptions: {
+          durable: true,
+        },
       },
-      noAck: false,
-      prefetchCount: 1,
     },
-  });
+    { inheritAppConfig: true },
+  );
 }
